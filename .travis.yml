@@ -1,6 +1,7 @@
 language: python
 python:
   - "3.7"
+  - "3.8"
 install:
   - sudo apt-get update
   - sudo apt-get install build-essential python3-dev python3-pip python3-setuptools python3-wheel python3-cffi libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev shared-mime-info
@@ -9,4 +10,6 @@ install:
   - pip install -r requirements.txt
 
 #Command to run test
+script:
+  - flake8 --max-complexity=10 --max-line-length=100 --exclude settings*,admin*,models .
   - python manage.py test
